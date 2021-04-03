@@ -11,5 +11,26 @@ class Sub(db.Model):
         self.name = name
         self.description = description
 
+    @classmethod
+    def create_sub(cls, name, description):
+        new_sub = Sub(name, description)
+        try:
+            db.session.add(new_sub)
+            db.session.commmit()
+        except:
+            db.session.rollback()
+            raise Exception('Session rollback')
+        return sub_schema.jsonify(new_sub)
+
 if __name__ == 'models':
     db.create_all()
+
+# When TRUE, indicates that if this Table is already present in the given MetaData,
+    # apply further arguments within the constructor to the existing Table.
+
+class SubSchema(marshmallow.Schema):
+    class Meta: 
+        fields = ('id', 'name', 'description')
+
+sub_schema = SubSchema()
+subs_schema = SubSchema(many=True)

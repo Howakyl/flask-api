@@ -3,6 +3,7 @@ import os
 from flask import Flask, request
 # sql alchemy is an ORM used by flask to communicate with the DB
 from flask_sqlalchemy import SQLAlchemy
+# marshmallow is used to dictate what fields will be sent back to the user in response
 from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
