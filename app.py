@@ -1,7 +1,13 @@
 import os
-from flask import Flask
+
+from flask import Flask, request
+from flask_sqlalchemy import SQLAlchemy
+from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
+
+# Base Directory
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 PORT = 8000
