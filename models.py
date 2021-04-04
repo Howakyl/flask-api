@@ -27,6 +27,11 @@ class Sub(db.Model):
         sub = Sub.query.get(subid)
         return sub_schema.jsonify(sub)
 
+    @classmethod
+    def get_all(cls):
+        subs = Sub.query.all()
+        return subs_schema.jsonify(subs)
+
 
 # When TRUE, indicates that if this Table is already present in the given MetaData,
     # apply further arguments within the constructor to the existing Table.

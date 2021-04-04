@@ -46,5 +46,10 @@ def create_sub(subid=None):
     else:
         return Sub.get_sub(subid)
 
+@app.route('/all', methods=['GET'])
+def get_all():
+    from models import Sub
+    return Sub.get_all()
+
 if __name__ == '__main__':
     app.run(debug=DEBUG, port=PORT)
