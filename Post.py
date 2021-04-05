@@ -28,3 +28,10 @@ class Post(db.Model):
                 raise Exception('Session rollback')
         return post_schema.jsonify(post)
 
+class PostSchema(marshmallow.Schema):
+    class Meta: 
+        fields = ('id', 'user', 'title', 'text', 'sub')
+
+# Init schema 
+post_schema = PostSchema()
+posts_schema = PostSchema(many=True)
