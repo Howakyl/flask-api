@@ -69,7 +69,10 @@ def create_post(postid=None):
         title = request.json['title']
         text = request.json['text']
         sub = request.json['sub']
-    
+
+        return Post.create_post(user, title, text, sub)
+    # else:
+    #     return Post.get
 
 
 
