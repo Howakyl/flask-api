@@ -30,10 +30,15 @@ marshmallow = Marshmallow(app)
 DEBUG = True
 PORT = 8000
 
+
+# HOME ROUTE 
 @app.route('/')
 def hello_world():
     return 'Hello, world!!'
 
+######## SUBS ########
+
+# CREATE SUB / GET ONE SUB
 @app.route('/sub', methods=['POST'])
 @app.route('/sub/<subid>', methods=['GET'])
 def create_sub(subid=None):
@@ -46,10 +51,18 @@ def create_sub(subid=None):
     else:
         return Sub.get_sub(subid)
 
+# ALL SUBS
 @app.route('/all', methods=['GET'])
 def get_all():
     from models import Sub
     return Sub.get_all()
+
+
+######## POSTS #######
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=DEBUG, port=PORT)
