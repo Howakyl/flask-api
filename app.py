@@ -60,7 +60,16 @@ def get_all():
 
 ######## POSTS #######
 
-
+@app.route('/post', methods=['POST'])
+@app.route('/post/<postid>', methods=['GET'])
+def create_post(postid=None):
+    from Post import Post
+    if postid == None:
+        user = request.json['user']
+        title = request.json['title']
+        text = request.json['text']
+        sub = request.json['sub']
+    
 
 
 
