@@ -43,13 +43,15 @@ def hello_world():
 @app.route('/sub/<subid>', methods=['GET'])
 def create_sub(subid=None):
     from models import Sub
+    # from Post import Post
     if subid == None:
         name = request.json['name']
         description = request.json['description']
+        # posts = request.json['posts']
 
         return Sub.create_sub(name, description)
     else:
-        return Sub.get_sub(subid)
+        return Sub.get_sub(subid) , print(Sub.get_sub)
 
 # ALL SUBS
 @app.route('/all', methods=['GET'])
@@ -58,12 +60,12 @@ def get_all():
     return Sub.get_all()
 
 
-######## POSTS #######
+######## POSTS ########
 
 @app.route('/post', methods=['POST'])
 @app.route('/post/<postid>', methods=['GET'])
 def create_post(postid=None):
-    from Post import Post
+    from models import Post
     if postid == None:
         user = request.json['user']
         title = request.json['title']
