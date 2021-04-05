@@ -1,5 +1,6 @@
 # post model
 from app import db, marshmallow
+from models import Sub
 
 class Post(db.Model):
     __table_args__ = {'extend_existing' : True}
@@ -26,7 +27,7 @@ class Post(db.Model):
         except:
                 db.session.rollback()
                 raise Exception('Session rollback')
-        return post_schema.jsonify(post)
+        return post_schema.jsonify(new_post)
 
     @classmethod
     def get_post(cls,post_id):
@@ -40,3 +41,6 @@ class PostSchema(marshmallow.Schema):
 # Init schema 
 post_schema = PostSchema()
 posts_schema = PostSchema(many=True)
+
+if __name__ == 'Post':
+    db.create_all()

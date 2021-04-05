@@ -71,8 +71,8 @@ def create_post(postid=None):
         sub = request.json['sub']
 
         return Post.create_post(user, title, text, sub)
-    # else:
-    #     return Post.get
+    else:
+        return Post.get_post(postid)
 
 
 
